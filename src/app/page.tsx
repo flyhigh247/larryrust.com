@@ -1,0 +1,15 @@
+import Link from 'next/link';
+import { Arrow, EntryCard } from '@/components/ui';
+import { projects } from '@/content/entries';
+import { site } from '@/content/site';
+import { pageMetadata } from '@/lib/metadata';
+export const metadata = pageMetadata('Application Security', site.description, '/');
+export default function Home() {
+  return <>
+    <section className="hero container" aria-labelledby="home-title"><div className="hero-copy"><p className="eyebrow hero-kicker"><span className="short-rule" /> THE SECURITY WORKBENCH</p><h1 id="home-title">Larry Rust<span className="accent">.</span></h1><p className="positioning">{site.positioning}</p><h2>Understand the system.<br />Question the boundaries.</h2><p className="hero-description">I’m building and documenting hands-on application-security work—turning questions about how systems fail into experiments, evidence, and clear explanations.</p><div className="hero-actions"><Link href="/projects/" className="button button-primary">Explore the work <Arrow /></Link><Link href="/about/" className="text-link">More about me <Arrow /></Link></div></div>
+    <aside className="focus-panel" aria-label="Portfolio focus"><div className="focus-heading"><span className="eyebrow">FIELD NOTES / 001</span><span className="tiny-label">A portfolio in progress</span></div><div className="boundary-diagram" aria-hidden="true"><span className="boundary-label">TRUST BOUNDARY</span><div className="diagram-node">Identity</div><span className="diagram-line" /><div className="diagram-core">Application<span>Inspect the assumptions.</span></div><div className="diagram-branches"><span>APIs</span><span>Cloud</span><span>AI</span></div></div><div className="focus-bottom"><span className="eyebrow">THE APPROACH</span><p>Build. Test. Explain.</p><span>Technical depth, with evidence to follow.</span></div></aside></section>
+    <div className="discipline-band"><div className="container discipline-inner"><span className="eyebrow">ACROSS THE LIFECYCLE</span><p>Threat modeling <span>/</span> Secure development <span>/</span> Security testing <span>/</span> DevSecOps</p></div></div>
+    <section className="container section" aria-labelledby="projects-title"><div className="section-heading"><div><p className="eyebrow">ON THE WORKBENCH</p><h2 id="projects-title">A foundation for deeper work.</h2></div><Link href="/projects/" className="text-link">All projects <Arrow /></Link></div><p className="section-description">These are planned directions. Repositories, findings, and case studies will be added as the work takes shape.</p><div className="card-grid">{projects.map(entry => <EntryCard key={entry.slug} entry={entry} />)}</div></section>
+    <section className="container research-callout" aria-labelledby="research-title"><div className="research-mark" aria-hidden="true">[ ? ]</div><div><p className="eyebrow">RESEARCH & NOTES</p><h2 id="research-title">Follow the questions.</h2><p>A place for threat models, AppSec writeups, experiments, and AI-security research—with assumptions and limitations in view.</p></div><Link href="/research/" className="text-link">Explore research <Arrow /></Link></section>
+  </>;
+}
