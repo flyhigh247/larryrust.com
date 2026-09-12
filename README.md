@@ -116,3 +116,17 @@ The interface uses semantic landmarks, one h1 per page, a keyboard skip link, vi
 
 Keep the pnpm lockfile committed and use `pnpm install --frozen-lockfile` in CI. Run typecheck and build after content or dependency changes. Review dependency security updates regularly. No credentials belong in this repository; `.env` files are ignored. Static export means updates require a rebuild and upload. Keep screenshots, test output, caches, and generated build files out of source control.
 `pnpm dev` and `pnpm build` use the supported Webpack bundler for compatibility with this Windows environment. The initial production build and TypeScript check passed.
+
+## Deployment status
+
+The portfolio is hosted at https://larryrust.com on Namecheap shared hosting.
+
+GitHub Actions checks TypeScript, builds the static site, and saves
+the exported files as a downloadable artifact.
+
+Deployment is currently manual: download the artifact from a successful
+main-branch CI run, upload it to the domain's cPanel document root,
+and extract it.
+
+Initial manual checks passed for navigation, project detail-page
+refreshes, social links, and missing-page handling.
